@@ -20,7 +20,7 @@ El **Articulo** tienen como atributos
 | Atributo    |      Tipo      |
 | ----------- | :------------: |
 | id          |      int       |
-| descripcion |      str       |
+| nombre |      str       |
 | precio      |     float      |
 | stock       |      int       |
 | marca       |   MarcaModel   |
@@ -31,7 +31,7 @@ El **Articulo** tienen como atributos
 | Atributo    | Tipo |
 | ----------- | :--: |
 | id          | int  |
-| descripcion | str  |
+| nombre | str  |
 
 **Proveedores**:
 

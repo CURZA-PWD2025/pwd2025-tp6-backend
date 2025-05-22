@@ -16,22 +16,22 @@ DB_CONFIG = {
 }
 TABLES = {}
 SEEDS = {}
-TABLES['MARCAS'] = (
-    "CREATE TABLE `MARCAS` ("
+TABLES['marcas'] = (
+    "CREATE TABLE `marcas` ("
     "  `id` int(11) NOT NULL AUTO_INCREMENT,"
     "  `nombre` varchar(50) NOT NULL,"
     "  PRIMARY KEY (`id`)"
     ") "
 )
-TABLES['CATEGORIAS'] = (
-    "CREATE TABLE `CATEGORIAS` ("
+TABLES['categorias'] = (
+    "CREATE TABLE `categorias` ("
     "  `id` int(11) NOT NULL AUTO_INCREMENT,"
     "  `nombre` varchar(50) NOT NULL,"
     "  PRIMARY KEY (`id`)"
     ") "
 )
-TABLES['PROVEEDORES'] = (
-    "CREATE TABLE `PROVEEDORES` ("
+TABLES['proveedores'] = (
+    "CREATE TABLE `proveedores` ("
     "  `id` int(11) NOT NULL AUTO_INCREMENT,"
     "  `nombre` varchar(50) NOT NULL,"
     "  `telefono` varchar(50) NOT NULL,"
@@ -40,27 +40,28 @@ TABLES['PROVEEDORES'] = (
     "  PRIMARY KEY (`id`)"
     ") "
 )
-TABLES['ARTICULOS'] = (
-    "CREATE TABLE `ARTICULOS` ("
+TABLES['articulos'] = (
+    "CREATE TABLE `articulos` ("
     "  `id` int(11) NOT NULL AUTO_INCREMENT,"
     "  `descripcion` varchar(150) NOT NULL,"
-    " `precio` decimal(10,2) NOT NULL,"
+    "  `precio` decimal(10,2) NOT NULL,"
     "  `stock` int(11) NOT NULL,"
-    "  PRIMARY KEY (`id`),"
     "  `marca_id` int(11) NOT NULL,"
     "  `proveedor_id` int(11) NOT NULL,"
-    " foreign key (`marca_id`) references MARCAS(id),"
-    " foreign key (`proveedor_id`) references PROVEEDORES(id)"
+    "  PRIMARY KEY (`id`),"
+    "  FOREIGN KEY (`marca_id`) REFERENCES marcas(id),"
+    "  FOREIGN KEY (`proveedor_id`) REFERENCES proveedores(id)"
     ") "
 )
-TABLES["ARTICULOS_CATEGORIAS"] = (
-    "CREATE TABLE `ARTICULOS_CATEGORIAS` ("
+TABLES["articulos_categorias"] = (
+    "CREATE TABLE `articulos_categorias` ("
     "  `articulo_id` int(11) NOT NULL,"
     "  `categoria_id` int(11) NOT NULL,"
-    " foreign key (`articulo_id`) references ARTICULOS(id),"
-    " foreign key (`categoria_id`) references CATEGORIAS(id)"
+    "  FOREIGN KEY (`articulo_id`) REFERENCES articulos(id),"
+    "  FOREIGN KEY (`categoria_id`) REFERENCES categorias(id)"
     ") "
 )
+
 
 SEEDS['PROVEEDORES'] = (
     "INSERT INTO PROVEEDORES (nombre, telefono, direccion, email) "
